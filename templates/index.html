@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask & Vuejs demo</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="task in tasks">
+      {% raw %}
+      {{ task.text }}
+      {% endraw %}
+    </li>
+  </ul>
+</div>
+
+<script>
+
+
+var apiURL = 'http://localhost:5000/todo/tasks'
+var mytasks
+
+var demo = new Vue({
+    el: '#app',
+    data : {
+      tasks: null
+    },
+
+    created: function(){
+      this.fetchData()
+    },
+
+    methods: {
+      fetchData: function() {
+        var xhr = new XMLHttpRequest()
+        var self = this
+        xhr.open('GET', apiURL)
+        xhr.onload = function () {
+          self.tasks = JSON.parse(xhr.responseText)
+        }
+        xhr.send()
+    }
+
+})
+
+</script>
+
+</body>
+</html>
