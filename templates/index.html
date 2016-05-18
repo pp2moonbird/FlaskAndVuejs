@@ -21,8 +21,6 @@
 
 
 var apiURL = 'http://localhost:5000/todo/tasks'
-var mytasks
-
 var demo = new Vue({
     el: '#app',
     data : {
@@ -35,13 +33,8 @@ var demo = new Vue({
 
     methods: {
       fetchData: function() {
-        var xhr = new XMLHttpRequest()
-        var self = this
-        xhr.open('GET', apiURL)
-        xhr.onload = function () {
-          self.tasks = JSON.parse(xhr.responseText)
-        }
-        xhr.send()
+        console.log('hello')
+      }
     }
 
 })
