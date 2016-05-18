@@ -10,7 +10,7 @@ def index():
 def get_tasks():
     list = ['1st: get an apple', '2nd: eat an apple']
     tasks = [{'text':x} for x in list]
-    return jsonify({'tasks': tasks})
+    return jsonify({'tasks': tasks}), 200, {'Access-Control-Allow-Origin':'*'}
 
 
 if __name__ == '__main__':

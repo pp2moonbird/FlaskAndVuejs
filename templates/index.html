@@ -33,6 +33,16 @@ var demo = new Vue({
 
     methods: {
       fetchData: function() {
+        var self = this
+        this.$http.get(apiURL).then(
+          function(response){
+            console.log(response)
+            self.tasks = response.data.tasks
+          },
+          function(response){
+
+          }
+        )
         console.log('hello')
       }
     }
